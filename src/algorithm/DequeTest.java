@@ -3,14 +3,24 @@ package algorithm;
 import java.util.ArrayDeque;
 import java.util.LinkedList;
 
+import com.sun.tools.javac.util.Pair;
+
 public class DequeTest {
 
 	public static void main(String[] args) {
 		LinkedList<Integer> deque = new LinkedList<Integer>();
+	    LinkedList<int[]> a = new LinkedList<int[]>();
+	    int[] a1 = {1,2};
+	    a.add(new int[] {1,2});
+	    
 		//queue: add/pop
-		deque.add(1);
-		deque.add(2);
-		deque.add(3);	
+		System.out.println(deque.pollFirst());
+		deque.push(1);
+		deque.push(2);
+		deque.push(3);	
+		for (int i = 0;  i < deque.size(); i ++) {
+			System.out.println(deque.get(i));
+		}
 		System.out.println(deque.getFirst());
 		System.out.println(deque.pop());
 		//stack: push/pop
