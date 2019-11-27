@@ -3,7 +3,6 @@ package algorithm;
 import java.util.ArrayDeque;
 import java.util.LinkedList;
 
-import com.sun.tools.javac.util.Pair;
 
 public class DequeTest {
 

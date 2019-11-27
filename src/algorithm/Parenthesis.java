@@ -5,7 +5,28 @@ import java.util.List;
 
 public class Parenthesis {
 	public static List<String> generateParenthesis2(int n) {
-	
+		LinkedList<String> result = new LinkedList<String>();		
+		recursiveGen(result, "", 0, 0, n);		
+		return result;
+	}
+	//cur is just like a node in the tree, if can be added a "left" or a "right"
+	private static void recursiveGen(List<String> result, String cur, int left, int right, int n) {
+		System.out.println(left + "#" + right);
+		if (left == n && right == n) {
+			
+			System.out.println(cur);
+			result.add(cur);
+			return;
+		}
+		if (left < n) {
+			//wrong!!!!! you can not change cur, otherwise the cur in next if will has an extra "("     cur = cur + "(";			
+			recursiveGen(result, cur + "(", left +1 , right, n);
+		}
+		if (right < n && left > right) {
+			//cur = cur + ")";
+			recursiveGen(result, cur + ")", left , right + 1, n);
+		}
+		
 	}
     public static List<String> generateParenthesis(int n) {
         LinkedList<String> result = new LinkedList<String>();
@@ -44,7 +65,7 @@ public class Parenthesis {
     }
 
 	public static void main(String[] args) {
-		List<String> a = generateParenthesis(2);
+		List<String> a = generateParenthesis2(3);
 		System.out.println("&&&&&&&");
 		for (String s: a) {
 			System.out.println(s);
