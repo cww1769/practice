@@ -2,9 +2,18 @@ package algorithm;
 
 import java.util.ArrayDeque;
 import java.util.LinkedList;
+import java.util.List;
 
 
 public class DequeTest {
+	
+	
+	public static void printList(List<Integer> l) {
+		System.out.println("print the list with size = " + l.size());
+		for (int i = 0; i < l.size(); i ++ ) {
+			System.out.println(l.get(i));
+		}
+	}
 
 	public static void main(String[] args) {
 		LinkedList<Integer> deque = new LinkedList<Integer>();
@@ -13,10 +22,18 @@ public class DequeTest {
 	    a.add(new int[] {1,2});
 	    
 		//queue: add/pop
-		System.out.println(deque.pollFirst());
-		deque.push(1);
-		deque.push(2);
-		deque.push(3);	
+		
+		deque.add(1);
+		deque.add(2);
+		deque.add(3);	
+		printList(deque);
+		System.out.println(deque.pop());
+		System.out.println("aaaaa=" + deque.size());
+		for (int i = 0; i < 3; i ++)
+			System.out.println(deque.removeFirst());
+		System.out.println("bbbbb=" + deque.size());
+		
+		
 		for (int i = 0;  i < deque.size(); i ++) {
 			System.out.println(deque.get(i));
 		}

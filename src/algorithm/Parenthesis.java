@@ -9,7 +9,7 @@ public class Parenthesis {
 		recursiveGen(result, "", 0, 0, n);		
 		return result;
 	}
-	//cur is just like a node in the tree, if can be added a "left" or a "right"
+	//this is DFS! cur is just like a node in the tree, if can be added a "left" or a "right"
 	private static void recursiveGen(List<String> result, String cur, int left, int right, int n) {
 		System.out.println(left + "#" + right);
 		if (left == n && right == n) {
@@ -28,6 +28,7 @@ public class Parenthesis {
 		}
 		
 	}
+	//this is BFS
     public static List<String> generateParenthesis(int n) {
         LinkedList<String> result = new LinkedList<String>();
         LinkedList<int[]> usedList = new LinkedList<int[]>();        
