@@ -10,8 +10,7 @@ public class Queues {
 
 	public Queues(int n) {
 		N = n;
-		DFS(0, 0, 0, 0, new LinkedList<String>());
-		printSolution(solution);
+		DFS(0, 0, 0, 0, "");
 	}
 	public static void printList(List<String> l) {
 		System.out.println("print the list with size = " + l.size());
@@ -25,10 +24,10 @@ public class Queues {
 			printList(ll.get(i));
 		}
 	}
-	private void DFS(int row, int col, int pie, int na, LinkedList<String> s) {
+	private void DFS(int row, int col, int pie, int na, String res) {
 		if (row == N) {
 			count++;
-			solution.add(ok);
+			solution.add(getPos(res, N));
 			return;
 		}
 		// get the bit which can put Q
@@ -36,11 +35,9 @@ public class Queues {
 		System.out.println("available columns: " + Integer.toBinaryString(available) + " for row " + (row + 1));
 		while (available > 0) {
 			// get the lowest bit, if we put it here
-			int bit = available & -available;
-			// fill the solution list
-			s.add(getBits(bit, N));
+			int bit = available & -available;					
 			System.out.println("let put it in col = " + Integer.toBinaryString(bit) + " for row " + (row + 1));
-			DFS(row + 1, col | bit, bit << 1, bit >> 1, s);
+			DFS(row + 1, col | bit, bit << 1, bit >> 1, res + "|" + bit);
 			// remove the lowest bit
 			available = available & (available - 1);
 		}
@@ -58,13 +55,22 @@ public class Queues {
 		}
 		return s.toString();
 	}
+	public static List<String> getPos(String s, int N) {
+		String[] ss = s.split("|");
+		List<String> res = new LinkedList<String>();
+		for (String p : ss) {
+			System.out.println(p);
+		    if (p != null && p.length() > 0)
+		    	res.add(getBits(Integer.valueOf(p), N));
+		}
+		return res;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Queues q = new Queues(5);
+		Queues q = new Queues(6);
 		System.out.println(q.count);
 		printSolution(q.solution);
-
 	}
 
 }
