@@ -32,12 +32,13 @@ public class Queues {
 		}
 		// get the bit which can put Q
 		int available = ~(col | pie | na) & ((1 << N) - 1);
+		System.out.println("col: " + Integer.toBinaryString(col) + " pie: " + Integer.toBinaryString(pie) + " na:" + Integer.toBinaryString(na));
 		System.out.println("available columns: " + Integer.toBinaryString(available) + " for row " + (row + 1));
 		while (available > 0) {
 			// get the lowest bit, if we put it here
 			int bit = available & -available;					
 			System.out.println("let put it in col = " + Integer.toBinaryString(bit) + " for row " + (row + 1));
-			DFS(row + 1, col | bit, bit << 1, bit >> 1, res + "|" + bit);
+			DFS(row + 1, col | bit, (pie | bit)  << 1, (na | bit) >> 1, res + " " + bit);
 			// remove the lowest bit
 			available = available & (available - 1);
 		}
@@ -56,7 +57,7 @@ public class Queues {
 		return s.toString();
 	}
 	public static List<String> getPos(String s, int N) {
-		String[] ss = s.split("|");
+		String[] ss = s.split(" ");
 		List<String> res = new LinkedList<String>();
 		for (String p : ss) {
 			System.out.println(p);
@@ -68,7 +69,7 @@ public class Queues {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Queues q = new Queues(6);
+		Queues q = new Queues(4);
 		System.out.println(q.count);
 		printSolution(q.solution);
 	}
