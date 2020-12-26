@@ -72,6 +72,8 @@ public class Queues {
 		Queues q = new Queues(4);
 		System.out.println(q.count);
 		printSolution(q.solution);
+		String s = "12";
+
 	}
 
 }

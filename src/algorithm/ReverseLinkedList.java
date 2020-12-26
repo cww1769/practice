@@ -32,7 +32,7 @@ public class ReverseLinkedList {
 			System.out.println(a.val);
 		}
 		System.out.println(a.next);
-		if (a == null || a == b || a.next == b) {
+		if (a == null || a == b ) {
 			System.out.println("return head!");
 			return head;
 		}
